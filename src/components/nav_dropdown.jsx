@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-const NavDropdown = ({ userDetail }) =>
+const NavDropdown = ({ userDetail, signOut }) =>
   (
     <ul className="nav navbar-nav navbar-right">
       {
@@ -15,7 +16,7 @@ const NavDropdown = ({ userDetail }) =>
             <ul className="dropdown-menu">
               <li>My Profile</li>
               <hr />
-              <li>Sign Out</li>
+              <li onClick={() => signOut()}>Sign Out</li>
             </ul>
           </li>
         ) :
@@ -28,7 +29,7 @@ const NavDropdown = ({ userDetail }) =>
     </ul>
   );
 
-export default NavDropdown;
+export default connect()(NavDropdown);
 
 NavDropdown.defaultProps = {
   userDetail: null,

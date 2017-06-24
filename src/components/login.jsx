@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import * as firebase from 'firebase';
-import { updateGoogleSessionInfo } from '../action/index';
 
 class Login extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      signIn: this.props.signIn,
+      signIn: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,33 +37,23 @@ class Login extends Component {
     } else {
       response = auth.createUserWithEmailAndPassword(email, password);
     }
-    console.log(response);
+    response.then(() => { browserHistory.push('/'); })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   handleGoogleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const token = result.credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      this.props.dispatch(updateGoogleSessionInfo(user, token));
-    }).catch(function(error) {
+    firebase.auth().signInWithPopup(provider)
+    .catch((error) => {
       console.log(error);
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      const credential = error.credential;
-      // ...
     });
   }
 
   render() {
     const { email, password, signIn } = this.state;
-    return (<div className="Modal">
+    return (<div className="Modal" style={{ marginTop: '50px' }}>
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="email" placeholder="Email" value={email} required onChange={this.handleChange} />
         <input type="password" name="password" placeholder="Password" value={password} required onChange={this.handleChange} />
@@ -79,7 +69,4 @@ class Login extends Component {
   }
 }
 
-export default connect(store => ({
-  user: store.googleSessionInfo.user,
-  token: store.googleSessionInfo.token,
-}))(Login);
+export default Login;

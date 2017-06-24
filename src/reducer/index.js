@@ -3,17 +3,17 @@ const fillMeUpState = {
     center: [27.6795718, 85.3171355],
     zoom: 12,
   },
-  googleSessionInfo: {
-    user: {},
-    token: '',
-  },
+  userDetail: null,
 };
 
 const fillMeUpReducer = (state = fillMeUpState, action) => {
-  const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
+    case 'SET_LOGGED_IN_USER' :
+      return { ...state, userDetail: action.payload };
+    case 'REMOVED_LOGGED_IN_USER' :
+      return { ...state, userDetail: null };
     default:
-      return newState;
+      return state;
   }
 };
 

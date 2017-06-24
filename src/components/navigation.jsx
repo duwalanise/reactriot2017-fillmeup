@@ -10,7 +10,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { userDetail } = this.props;
+    const { userDetail, signOut } = this.props;
     return (
       <nav className="navbar navbar-fixed-top navbar-light">
         <div className="container-fluid">
@@ -36,7 +36,7 @@ class Navigation extends Component {
                   null
                 }
               </ul>
-              <NavDropDown userDetail={userDetail} />
+              <NavDropDown userDetail={userDetail} signOut={signOut} />
             </div>
           </div>
         </div>
