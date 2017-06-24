@@ -32,7 +32,7 @@ render(
           <Route path="new" component={NewPump} />
         </Route>
         {/*<Route path="*" component={NotFound} />*/}
-        <Route path="/pumps/:pumpId" component={PumpDetail} />
+        <Route path="/pumps/:uid" component={PumpDetail} />
       </Route>
     </Router>
   </Provider>, document.getElementById('app'));
