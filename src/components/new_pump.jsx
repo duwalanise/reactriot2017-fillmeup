@@ -59,6 +59,7 @@ class NewPump extends Component {
   render() {
     const { name, address, contact, coordinates } = this.state;
     return (<div className="login-modal">
+      <h4>Add Station</h4>
       <form onSubmit={this.handleSubmit}>
         <Input
           type="text"
