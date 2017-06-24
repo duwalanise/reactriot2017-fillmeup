@@ -1,15 +1,22 @@
 import React, { PropTypes, Component } from 'react';
 import GoogleMap from 'google-map-react';
+import { connect } from 'react-redux';
 
-export default class SimpleMapPage extends Component {
+class SimpleMapPage extends Component {
   render() {
     return (
       <GoogleMap center={this.props.center} zoom={this.props.zoom} />
     );
   }
 }
+
+export default connect(store => ({
+  center: store.googleMapSetting.center,
+  zoom: store.googleMapSetting.zoom,
+}))(SimpleMapPage);
+
 SimpleMapPage.defaultProps = {
-  center: [27.6795718, 85.3171355],
+  center: [0, 0],
   zoom: 12,
 };
 

@@ -1,5 +1,8 @@
 const fillMeUpState = {
-
+  googleMapSetting: {
+    center: [27.6795718, 85.3171355],
+    zoom: 12,
+  },
 };
 
 const fillMeUpReducer = (state = fillMeUpState, action) => {
