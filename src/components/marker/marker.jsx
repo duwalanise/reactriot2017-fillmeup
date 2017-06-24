@@ -18,12 +18,12 @@ class Marker extends Component {
     const showInformation = this.state.isMarkerOpen ?
       <MarkerInfoTemplate pumpDetail={this.props.pumpDetail} onClick={this.handleClick} /> : null;
     return (
-      <div>
+      <div className="marker">
+        { showInformation }
         <MarkerTag
           status={this.props.pumpDetail.status}
           onClick={this.handleClick}
         />
-        { showInformation }
       </div>
     );
   }

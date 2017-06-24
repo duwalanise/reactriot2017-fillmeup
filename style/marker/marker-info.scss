@@ -1,12 +1,27 @@
 .marker-information {
-  width: 400px;
-  background-color: #fff;
-  border-radius: 5px;
-  margin: 15px;
-  border: 1px solid #eee;
+    width: 400px;
+    color: #fff;
+    background-color: #1496bb;
+    border-radius: 5px;
+    margin: -135px -180px;
+    border: solid 10px transparent;
+    border-top-color: #1496bb;
+    position: absolute;
 }
 .close-icon {
-  float: right;
-  margin: 5px -8px;
-  cursor: pointer;
+    float: right;
+    margin: -5px -17px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.marker .marker-information:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid #1496bb 10px;
+    bottom: -20px;
+    content: " ";
+    left: 50%;
+    margin-left: -25px;
+    position: absolute;
 }
