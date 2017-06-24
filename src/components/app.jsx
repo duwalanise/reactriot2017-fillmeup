@@ -6,9 +6,9 @@ import store from '../store';
 
 class App extends Component {
   render() {
-    <Provider store={store}>
+    return (<Provider store={store}>
       <div>Hello</div>
-    </Provider>
+    </Provider>);
   }
 }
 
