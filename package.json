@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Hackbit/reactriot2017-fillmeup#readme",
   "dependencies": {
+    "firebase": "^4.1.3",
     "prop-types": "^15.5.9",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
