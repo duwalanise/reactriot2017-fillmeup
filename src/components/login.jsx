@@ -19,6 +19,7 @@ class Login extends Component {
     this.handleForgetPassword = this.handleForgetPassword.bind(this);
     this.handlePasswordResetClick = this.handlePasswordResetClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleSignInToggle = this.handleSignInToggle.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +84,10 @@ class Login extends Component {
       </div>);
     }
     return null;
+  }
+
+  handleSignInToggle() {
+    this.setState({ signIn: !this.state.signIn, hasError: false });
   }
 
   handleForgetPassword() {
@@ -191,6 +196,17 @@ class Login extends Component {
                     >
                       { signIn ? 'Sign In' : 'Sign Up'}
                     </button>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-xs-12">
+                  <div className="form-group">
+                    <h5>
+                      <span onClick={this.handleSignInToggle} className="new-user">
+                        { this.state.signIn ? 'New user?' : 'Existing user?'}
+                      </span>
+                    </h5>
                   </div>
                 </div>
               </div>
