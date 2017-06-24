@@ -14,7 +14,7 @@ const NavDropdown = ({ userDetail, signOut }) =>
               <div>{userDetail.email}</div>
             </a>
             <ul className="dropdown-menu">
-              <li><Link to="/profile">My Profile</Link></li>
+              <li><Link to="/pumps/new">Add Station</Link></li>
               <li onClick={() => signOut()}><Link to="/">Sign Out</Link></li>
             </ul>
           </li>

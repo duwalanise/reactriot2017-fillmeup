@@ -26,7 +26,9 @@ class App extends Component {
     return (
       <div>
         <Navigation userDetail={userDetail} signOut={App.signOut} />
-        {children}
+        <div className="children-wrap">
+          {children}
+        </div>
       </div>
     );
   }

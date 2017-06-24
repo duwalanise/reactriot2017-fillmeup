@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   handleChange(evt) {
@@ -65,6 +65,7 @@ class Login extends Component {
   handleSignIn(service) {
     const provider = this.getProvider(service);
     firebase.auth().signInWithPopup(provider)
+      .then(() => { browserHistory.push('/'); })
       .catch((error) => {
         console.log(error);
         this.setState({ hasError: true });

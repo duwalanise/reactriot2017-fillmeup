@@ -1,7 +1,70 @@
 @import 'navigation';
 @import 'login';
+@import 'switch';
 
-.app-class {
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.children-wrap {
   display: grid;
   height: 100vh;
+  margin-top: 51px;
+}
+
+.pump-detail-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 80%;
+  margin-top: 3%;
+  border-radius: 5px;
+  .log-week {
+    z-index: 1;
+    position: relative;
+    margin-left: 15px;
+    margin-top: 20px;
+  }
+  #workstream-column-chart {
+    margin-top: -35px;
+  }
+}
+
+.choose-location {
+  display: grid;
+  height: 250px;
+  border: solid 1px #cccccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.pump-detail {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  display: flex;
+  margin: 0 15px;
+  .other-detail {
+    span {
+      margin-right: 5px;
+    }
+    .seperator {
+      margin-right: 20px;
+    }
+    i {
+      font-size: 10px;
+      color: #646464;
+    }
+  }
 }

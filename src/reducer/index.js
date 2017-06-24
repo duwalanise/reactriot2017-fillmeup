@@ -8,8 +8,8 @@ const fillMeUpState = {
     token: '',
   },
   pumpDetails: [{
-    pump_id: 'abcdefg',
-    user_id: '1234567',
+    pumpId: 'abcdefg',
+    uid: '1234567',
     name: 'Rajat Petrol Service',
     address: 'Kritipur',
     open_hours: '6a.m. - 7p.m.',
@@ -18,8 +18,8 @@ const fillMeUpState = {
     status: 'Open',
     contact: '987654321',
     coordinates: { lat: 123123213, long: 1312312321 },
-    consumption_today: 3000,
-    distripution_today: 2500,
+    consumptionToday: 3000,
+    distriputionToday: 4500,
     log: [{
       date: '01/01/2017',
       consumption: 3000,

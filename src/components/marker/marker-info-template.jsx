@@ -7,7 +7,7 @@ class MarkerInfoTemplate extends Component {
   render() {
     const { pumpDetail } = this.props;
     const handleInfoClose = (
-      <span className="close-icon" onClick={() => this.props.onClick()} >X</span>
+      <span className="close-icon" onClick={() => this.props.onClick()} ><i className="fa fa-times" aria-hidden="true" /></span>
     );
     const displayInformation = R.isEmpty(pumpDetail) ?
       (<div className="container-fluid">
