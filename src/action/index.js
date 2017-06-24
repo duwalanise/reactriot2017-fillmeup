@@ -10,3 +10,9 @@ export const userLogOut = () =>
   ({
     type: 'REMOVED_LOGGED_IN_USER',
   });
+
+export const storePumps = (pumps) =>
+  ({
+    type: 'STORE_PUMP_DETAILS',
+    payload: pumps,
+  });
