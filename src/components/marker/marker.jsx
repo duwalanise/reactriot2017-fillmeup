@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import R from 'ramda';
 import MarkerTag from './marker-tag.jsx';
 import MarkerInfoTemplate from './marker-info-template.jsx';
 
@@ -16,7 +17,7 @@ class Marker extends Component {
   
   render() {
     const { pumpDetail } = this.props;
-    const showInformation = this.state.isMarkerOpen && pumpDetail ?
+    const showInformation = this.state.isMarkerOpen && !R.isEmpty(pumpDetail) ?
       <MarkerInfoTemplate pumpDetail={pumpDetail} onClick={this.handleClick} /> : null;
     return (
       <div className="marker">

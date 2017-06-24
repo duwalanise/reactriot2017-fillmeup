@@ -37,6 +37,7 @@ class CustomChart extends Component {
         graph_id={this.props.chartId}
         width="100%"
         height="400px"
+        loader={<i className="fa fa-spinner fa-pulse fa-fw" />}
       />
     );
   }

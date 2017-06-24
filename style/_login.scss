@@ -7,28 +7,30 @@
   margin: -75px -300px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  .facebook-login {
+  .facebook-login, .google-login, .twitter-login {
     text-align: left;
     color: white;
-    background-color: #3f5c9a;
     width: 100%;
+  }
+  .facebook-login {
+    background-color: #3f5c9a;
   }
   .google-login {
-    text-align: left;
-    color: white;
     background-color: #d34836;
-    width: 100%;
   }
   .twitter-login {
-    text-align: left;
-    color: white;
     background-color: #00aced;
-    width: 100%;
   }
   .btn:hover {
     opacity: 0.75;
   }
   .login-info {
     border-right: 1px solid #ccc;
+  }
+  .forgot-password, .forgetten-password-back, .new-user {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
