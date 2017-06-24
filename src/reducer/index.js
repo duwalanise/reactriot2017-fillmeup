@@ -19,7 +19,7 @@ const fillMeUpState = {
     contact: '987654321',
     coordinates: { lat: 123123213, long: 1312312321 },
     consumptionToday: 3000,
-    distriputionToday: 2500,
+    distriputionToday: 4500,
     log: [{
       date: '01/01/2017',
       consumption: 3000,

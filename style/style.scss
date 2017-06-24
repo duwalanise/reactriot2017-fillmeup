@@ -1,5 +1,6 @@
 @import 'navigation';
 @import 'login';
+@import 'switch';
 
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');
 html,
@@ -22,7 +23,7 @@ body {
   margin-top: 51px;
 }
 
-.pumpDetailWrapper {
+.pump-detail-wrapper {
   width: 80%;
   margin: 0 auto;
   border: 1px solid #ccc;
@@ -30,10 +31,15 @@ body {
   height: 80%;
   margin-top: 3%;
   border-radius: 5px;
-}
-
-.other-detail span {
-  margin-right: 5px;
+  .log-week {
+    z-index: 1;
+    position: relative;
+    margin-left: 15px;
+    margin-top: 20px;
+  }
+  #workstream-column-chart {
+    margin-top: -35px;
+  }
 }
 
 .choose-location {
@@ -44,3 +50,21 @@ body {
   margin-bottom: 15px;
 }
 
+.pump-detail {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  display: flex;
+  margin: 0 15px;
+  .other-detail {
+    span {
+      margin-right: 5px;
+    }
+    .seperator {
+      margin-right: 20px;
+    }
+    i {
+      font-size: 10px;
+      color: #646464;
+    }
+  }
+}
