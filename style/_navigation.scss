@@ -6,6 +6,9 @@
       a:link, a:hover, a:active {
         background: inherit;
       }
+      a {
+        color: #ffffff;
+      }
     }
   }
 
@@ -19,6 +22,9 @@
         }
         li:hover:after {
           width: 0;
+        }
+        .dropdown-menu a {
+          color: #000000;
         }
       }
     }

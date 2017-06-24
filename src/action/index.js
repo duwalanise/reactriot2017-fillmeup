@@ -1,8 +1,12 @@
-export const updateGoogleSessionInfo = (user, token) =>
+export const userLogin = user =>
   ({
-    type: 'UPDATE_GOOGLE_SESSION_INFO',
+    type: 'SET_LOGGED_IN_USER',
     payload: {
       user,
-      token,
     },
+  });
+
+export const userLogOut = () =>
+  ({
+    type: 'REMOVED_LOGGED_IN_USER',
   });

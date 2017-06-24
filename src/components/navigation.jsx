@@ -10,7 +10,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { userDetail } = this.props;
+    const { userDetail, signOut } = this.props;
     return (
       <nav className="navbar navbar-fixed-top navbar-light">
         <div className="container-fluid">
@@ -22,7 +22,7 @@ class Navigation extends Component {
               <span className="icon-bar" />
             </button>
             <IndexLink to="/" className="navbar-brand">
-              <span>A</span>
+              <a>A</a>
             </IndexLink>
           </div>
           <div>
@@ -31,12 +31,12 @@ class Navigation extends Component {
                 {
                   userDetail ?
                   (
-                    <li>My Pumps</li>
+                    <li><Link to="/pumps" activeClassName="activeNav">My Pump</Link></li>
                   ) :
                   null
                 }
               </ul>
-              <NavDropDown userDetail={userDetail} />
+              <NavDropDown userDetail={userDetail} signOut={signOut} />
             </div>
           </div>
         </div>
