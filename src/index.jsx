@@ -6,6 +6,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/app.jsx';
 import SimpleMap from './components/map.jsx';
 import Login from './components/login.jsx';
+import NewPump from './components/new_pump.jsx';
 import '../style/style.scss';
 import store from '../src/store';
 
@@ -25,7 +26,10 @@ render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={SimpleMap} />
-        <Route path="/login" component={Login} />
+        <Route path="login" component={Login} />
+        <Route path="pumps">
+          <Route path="new" component={NewPump} />
+        </Route>
         {/*<Route path="*" component={NotFound} />*/}
       </Route>
     </Router>
