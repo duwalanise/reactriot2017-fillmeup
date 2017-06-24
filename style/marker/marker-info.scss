@@ -9,9 +9,10 @@
     position: absolute;
 }
 .close-icon {
-  float: right;
-  margin: 5px -8px;
-  cursor: pointer;
+    float: right;
+    margin: -5px -17px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .marker .marker-information:after {
