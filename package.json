@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d --watch",
-    "build": "node_modules/webpack/bin/webpack -p",
+    "build": "webpack -p",
     "prod": "NODE_ENV=production node server.js",
-    "postinstall": "node_modules/webpack/bin/webpack -p"
+    "preinstall": "npm install -g webpack"
   },
   "repository": {
     "type": "git",
