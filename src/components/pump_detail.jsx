@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
 
@@ -104,9 +105,20 @@ class PumpDetail extends Component {
   }
 
   render() {
-    const currentPumpId = this.props.params.pumpId;
+    const currentUserId = this.props.params.uid;
     const pumpDetails = this.props.pumpDetails;
-    const currentPump = pumpDetails.filter(el => el.pumpId === currentPumpId);
+    const currentPump = pumpDetails.filter(el => el.uid === currentUserId);
+    if (pumpDetails.length === 0 || currentPump.length === 0) {
+      return (
+        <div className="pump-detail-wrapper text-center">
+          <h3> You dont have any pump station. Add a new station right now.</h3>
+          <button
+            className="btn btn-primary"
+            onClick={() => browserHistory.push('/pumps/new')}
+          >Add new station</button>
+        </div>
+      );
+    }
     // this.checkStatus(currentPump[0]);
     const {
       columnChartColumns,
@@ -118,6 +130,7 @@ class PumpDetail extends Component {
     } = this.state;
     return (
       <div className="pump-detail-wrapper">
+        <button className="btn btn-primary">Add New</button>
         <div className="row">
           <div className="pump-detail">
             <div className="col-xs-6">
@@ -131,9 +144,9 @@ class PumpDetail extends Component {
               </h4>
               <div className="other-detail">
                 <span><i className="fa fa-circle" /> Address:</span>
-                <span className="seperator">{currentPump[0].address}</span>
+                <span className="seperator">{currentPump[0].address || '-' }</span>
                 <span><i className="fa fa-circle" /> Contact:</span>
-                <span>{currentPump[0].contact}</span>
+                <span>{currentPump[0].contact || '-' }</span>
               </div>
             </div>
             <div className="col-xs-6 text-right">
