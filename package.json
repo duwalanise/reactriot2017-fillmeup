@@ -1,0 +1,19 @@
+{
+  "name": "fillmeup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hackbit/reactriot2017-fillmeup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hackbit/reactriot2017-fillmeup/issues"
+  },
+  "homepage": "https://github.com/Hackbit/reactriot2017-fillmeup#readme"
+}
