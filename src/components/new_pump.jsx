@@ -18,8 +18,8 @@ class NewPump extends Component {
       status: 'open',
       contact: '',
       coordinates: { lat: null, lng: null },
-      consumption_today: 0,
-      distripution_today: 0,
+      consumptionToday: 0,
+      distriputionToday: 0,
       log: [],
     };
     this.handleChange = this.handleChange.bind(this);

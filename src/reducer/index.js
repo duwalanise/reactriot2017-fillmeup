@@ -18,8 +18,11 @@ const fillMeUpReducer = (state = fillMeUpState, action) => {
     case 'REMOVED_LOGGED_IN_USER' :
       return { ...state, userDetail: null };
     case 'STORE_PUMP_DETAILS' :
-      const pumpDetails = Object.keys(action.payload).map(key => action.payload[key]);
-      return { ...state, pumpDetails };
+      if (action.payload) {
+        const pumpDetails = Object.keys(action.payload).map(key => action.payload[key]);
+        return { ...state, pumpDetails };
+      }
+      return state;
     default:
       return state;
   }
