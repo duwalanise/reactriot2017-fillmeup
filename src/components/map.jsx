@@ -1,13 +1,22 @@
 import React, { PropTypes, Component } from 'react';
 import GoogleMap from 'google-map-react';
 import { connect } from 'react-redux';
-import MarkerText from './marker/marker-text.jsx';
+import Marker from './marker/marker.jsx';
 
 class SimpleMapPage extends Component {
   render() {
+    const { center, zoom, pumpDetails } = this.props;
+    const showMarkers = pumpDetails.map(pumpDetail =>
+      <Marker
+        key={pumpDetail.pump_id}
+        lat={pumpDetail.latitude}
+        lng={pumpDetail.longitude}
+        pumpDetail={pumpDetail}
+      />,
+    );
     return (
-      <GoogleMap center={this.props.center} zoom={this.props.zoom}>
-        <MarkerText lat="27.6795718" lng="85.3171355" status={'open'} />
+      <GoogleMap center={center} zoom={zoom}>
+        { showMarkers }
       </GoogleMap>
     );
   }
@@ -16,14 +25,17 @@ class SimpleMapPage extends Component {
 export default connect(store => ({
   center: store.googleMapSetting.center,
   zoom: store.googleMapSetting.zoom,
+  pumpDetails: store.pumpDetails,
 }))(SimpleMapPage);
 
 SimpleMapPage.defaultProps = {
   center: [0, 0],
   zoom: 12,
+  pumpDetails: [],
 };
 
 SimpleMapPage.propTypes = {
   center: PropTypes.arrayOf(PropTypes.any),
   zoom: PropTypes.number,
+  pumpDetails: PropTypes.arrayOf(PropTypes.object),
 };
