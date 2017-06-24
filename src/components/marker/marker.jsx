@@ -15,13 +15,14 @@ class Marker extends Component {
   }
   
   render() {
-    const showInformation = this.state.isMarkerOpen ?
-      <MarkerInfoTemplate pumpDetail={this.props.pumpDetail} onClick={this.handleClick} /> : null;
+    const { pumpDetail } = this.props;
+    const showInformation = this.state.isMarkerOpen && pumpDetail ?
+      <MarkerInfoTemplate pumpDetail={pumpDetail} onClick={this.handleClick} /> : null;
     return (
       <div className="marker">
         { showInformation }
         <MarkerTag
-          status={this.props.pumpDetail.status}
+          status={pumpDetail.status}
           onClick={this.handleClick}
         />
       </div>
