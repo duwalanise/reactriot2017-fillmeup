@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import * as firebase from 'firebase';
+import { updateGoogleSessionInfo } from '../action/index';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,6 +40,27 @@ class Login extends React.Component {
     console.log(response);
   }
 
+  handleGoogleSignIn() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const token = result.credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      this.props.dispatch(updateGoogleSessionInfo(user, token));
+    }).catch(function(error) {
+      console.log(error);
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      const credential = error.credential;
+      // ...
+    });
+  }
+
   render() {
     const { email, password, signIn } = this.state;
     return (<div className="Modal">
@@ -50,8 +74,12 @@ class Login extends React.Component {
         <button className="tw" onClick={this.props.onClick}><i className="fa fa-twitter" aria-hidden="true" /></button>
       </div>
       <a href="#">Lost your password ?</a>
+      <div className="btn-primary" onClick={() => this.handleGoogleSignIn()}>Click</div>
     </div>);
   }
 }
 
-export default Login;
+export default connect(store => ({
+  user: store.googleSessionInfo.user,
+  token: store.googleSessionInfo.token,
+}))(Login);

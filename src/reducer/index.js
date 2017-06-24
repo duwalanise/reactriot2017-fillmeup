@@ -3,6 +3,10 @@ const fillMeUpState = {
     center: [27.6795718, 85.3171355],
     zoom: 12,
   },
+  googleSessionInfo: {
+    user: {},
+    token: '',
+  },
 };
 
 const fillMeUpReducer = (state = fillMeUpState, action) => {
