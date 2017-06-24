@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 import * as firebase from 'firebase';
-import { Provider } from 'react-redux';
-import store from '../store';
+import { connect } from 'react-redux';
 import Login from './login.jsx';
 
 class App extends Component {
@@ -15,10 +14,10 @@ class App extends Component {
   }
 
   render() {
-    return (<Provider store={store}>
-      <Login signIn />
-    </Provider>);
+    return <Login signIn />;
   }
 }
 
-export default App;
+export default connect(store => ({
+  test: store.test,
+}))(App);

@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import * as firebase from 'firebase';
+import { Provider } from 'react-redux';
 import App from './components/app.jsx';
 import SimpleMap from './components/map.jsx';
 import '../style/style.scss';
+import store from '../src/store';
 
 const config = {
   apiKey: "AIzaSyBIaSiMh-NgPcs2CW5jzRgmPJE_Y69XEpE",
@@ -16,4 +18,4 @@ const config = {
 
 firebase.initializeApp(config);
 
-render(<SimpleMap />, document.getElementById('app'));
+render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
