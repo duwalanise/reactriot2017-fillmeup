@@ -7,7 +7,7 @@ class SimpleMapPage extends Component {
   render() {
     return (
       <GoogleMap center={this.props.center} zoom={this.props.zoom}>
-        <MarkerText lat={27.6795718} lng={85.3171355} status={'open'} />
+        <MarkerText lat={this.props.center} lng={this.props.zoom} status={'open'} />
       </GoogleMap>
     );
   }
