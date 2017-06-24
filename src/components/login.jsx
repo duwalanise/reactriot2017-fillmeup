@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import * as firebase from 'firebase';
 
@@ -38,9 +37,9 @@ class Login extends Component {
       response = auth.createUserWithEmailAndPassword(email, password);
     }
     response.then(() => { browserHistory.push('/'); })
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   handleGoogleSignIn() {
@@ -109,7 +108,7 @@ class Login extends Component {
           <div className="row">
             <div className="col-xs-12">
               <div className="form-group">
-                <button className="btn google-login"><i className="fa fa-google" />&nbsp;Google</button>
+                <button onClick={() => this.handleGoogleSignIn()} className="btn google-login"><i className="fa fa-google" />&nbsp;Google</button>
               </div>
             </div>
           </div>
