@@ -7,6 +7,7 @@ import App from './components/app.jsx';
 import SimpleMap from './components/map.jsx';
 import Login from './components/login.jsx';
 import NewPump from './components/new_pump.jsx';
+import PumpDetail from './components/pump_detail.jsx';
 import '../style/style.scss';
 import store from '../src/store';
 
@@ -31,6 +32,7 @@ render(
           <Route path="new" component={NewPump} />
         </Route>
         {/*<Route path="*" component={NotFound} />*/}
+        <Route path="/pumps/:pumpId" component={PumpDetail} />
       </Route>
     </Router>
   </Provider>, document.getElementById('app'));

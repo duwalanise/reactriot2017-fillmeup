@@ -1,7 +1,37 @@
 @import 'navigation';
 @import 'login';
 
-.app-class {
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
+@font-face {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.children-wrap {
   display: grid;
   height: 100vh;
+  margin-top: 51px;
+}
+
+.pumpDetailWrapper {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 80%;
+  margin-top: 3%;
+  border-radius: 5px;
+}
+
+.other-detail span {
+  margin-right: 5px;
 }
