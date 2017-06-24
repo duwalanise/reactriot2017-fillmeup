@@ -18,4 +18,4 @@ const config = {
 
 firebase.initializeApp(config);
 
-render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+render(<Provider store={store}><SimpleMap /></Provider>, document.getElementById('app'));

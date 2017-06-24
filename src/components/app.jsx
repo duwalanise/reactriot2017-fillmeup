@@ -18,6 +18,6 @@ class App extends Component {
   }
 }
 
-export default connect(store => ({
-  test: store.test,
+export default connect(() => ({
+
 }))(App);
