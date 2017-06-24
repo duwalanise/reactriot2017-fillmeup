@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import * as firebase from 'firebase';
 import App from './components/app.jsx';
 import SimpleMap from './components/map.jsx';
+import '../style/style.scss';
 
 const config = {
   apiKey: "AIzaSyBIaSiMh-NgPcs2CW5jzRgmPJE_Y69XEpE",
