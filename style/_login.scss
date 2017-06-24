@@ -1,4 +1,5 @@
 .login-modal {
+  background-color: white;
   width: 600px;
   padding: 20px;
   position: fixed;
@@ -7,7 +8,7 @@
   margin: -75px -300px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  .facebook-login, .google-login, .twitter-login {
+  .facebook-login, .google-login, .twitter-login, .github-login {
     text-align: left;
     color: white;
     width: 100%;
@@ -20,6 +21,9 @@
   }
   .twitter-login {
     background-color: #00aced;
+  }
+  .github-login {
+    background-color: #24292e;
   }
   .btn:hover {
     opacity: 0.75;
