@@ -10,7 +10,7 @@ export default class SimpleMapPage extends Component {
 }
 SimpleMapPage.defaultProps = {
   center: [27.6795718, 85.3171355],
-  zoom: 9,
+  zoom: 12,
 };
 
 SimpleMapPage.propTypes = {
