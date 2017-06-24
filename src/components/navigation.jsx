@@ -31,7 +31,7 @@ class Navigation extends Component {
                 {
                   userDetail ?
                   (
-                    <li><Link to="pumps/abcdefg" activeClassName="activeNav">My Pump</Link></li>
+                    <li><Link to={`pumps/${userDetail.uid}`} activeClassName="activeNav">My Pump</Link></li>
                   ) :
                   null
                 }
