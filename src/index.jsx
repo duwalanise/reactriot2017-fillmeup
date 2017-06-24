@@ -2,8 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import * as firebase from 'firebase';
 import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/app.jsx';
 import SimpleMap from './components/map.jsx';
+import Login from './components/login.jsx';
 import '../style/style.scss';
 import store from '../src/store';
 
@@ -18,4 +20,13 @@ const config = {
 
 firebase.initializeApp(config);
 
-render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={SimpleMap} />
+        <Route path="/login" component={Login} />
+        {/*<Route path="*" component={NotFound} />*/}
+      </Route>
+    </Router>
+  </Provider>, document.getElementById('app'));
