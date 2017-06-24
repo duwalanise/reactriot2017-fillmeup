@@ -58,6 +58,8 @@ class Login extends Component {
         return new firebase.auth.FacebookAuthProvider();
       case 'Twitter':
         return new firebase.auth.TwitterAuthProvider();
+      case 'GitHub':
+        return new firebase.auth.GithubAuthProvider();
       default:
         return null;
     }
@@ -252,6 +254,18 @@ class Login extends Component {
                     className="btn twitter-login"
                   >
                     <i className="fa fa fa-twitter" />&nbsp;Twitter
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="form-group">
+                  <button
+                    onClick={() => this.handleSignIn('GitHub')}
+                    className="btn github-login"
+                  >
+                    <i className="fa fa fa-github" />&nbsp;GitHub
                   </button>
                 </div>
               </div>
