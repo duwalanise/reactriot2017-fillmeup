@@ -53,11 +53,47 @@ class Login extends Component {
 
   render() {
     const { email, password, signIn } = this.state;
-    return (<div className="Modal" style={{ marginTop: '50px' }}>
+    return (<div className="login-modal">
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="email" placeholder="Email" value={email} required onChange={this.handleChange} />
-        <input type="password" name="password" placeholder="Password" value={password} required onChange={this.handleChange} />
-        <button ref={(btn) => { this.signIn = btn; }}>{ signIn ? 'Sign In' : 'Sign Up'}</button>
+        <div className="row">
+          <div className="col-xs-12">
+            <div className="form-group">
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={email}
+                className="form-control"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <div className="form-group">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                className="form-control"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <div className="form-group">
+              <button
+                className="btn btn-primary form-control"
+              >{ signIn ? 'Sign In' : 'Sign Up'}</button>
+            </div>
+          </div>
+        </div>
       </form>
       <div className="social-signin">
         <button className="fb" onClick={this.props.onClick}><i className="fa fa-facebook" aria-hidden="true" /></button>
