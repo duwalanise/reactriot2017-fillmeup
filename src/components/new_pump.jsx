@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import * as firebase from 'firebase';
+import GoogleMap from 'google-map-react';
 import Input from './input.jsx';
+import Marker from './marker/marker.jsx';
 
 class NewPump extends Component {
   constructor(props) {
@@ -15,13 +17,14 @@ class NewPump extends Component {
       address: '',
       status: 'open',
       contact: '',
-      coordinates: { lat: '', long: '' },
+      coordinates: { lat: null, lng: null },
       consumption_today: 0,
       distripution_today: 0,
       log: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.mapClick = this.mapClick.bind(this);
   }
 
   generateId() {
@@ -31,6 +34,12 @@ class NewPump extends Component {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return `${text}${Date.now()}`;
+  }
+
+  mapClick({ lat, lng }) {
+    this.setState({
+      coordinates: { lat, lng },
+    });
   }
 
   handleChange(evt) {
@@ -48,7 +57,7 @@ class NewPump extends Component {
   }
 
   render() {
-    const { name, address, contact } = this.state;
+    const { name, address, contact, coordinates } = this.state;
     return (<div className="login-modal">
       <form onSubmit={this.handleSubmit}>
         <Input
@@ -76,7 +85,14 @@ class NewPump extends Component {
           className="form-control"
           handleChange={this.handleChange}
         />
-        
+        <div className="choose-location">
+          <GoogleMap center={[0, 0]} zoom={3} onClick={this.mapClick}>
+            <Marker
+              lat={coordinates.lat}
+              lng={coordinates.lng}
+            />
+          </GoogleMap>
+        </div>
         <div className="row">
           <div className="col-xs-12">
             <div className="form-group">
