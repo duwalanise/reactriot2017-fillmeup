@@ -12,6 +12,7 @@ const fillMeUpState = {
     user_id: '1234567',
     name: 'Rajat Petrol Service',
     address: 'Kritipur',
+    open_hours: '6a.m. - 7p.m.',
     status: 'Open',
     contact: '987654321',
     coordinates: { lat: 123123213, long: 1312312321 },

@@ -1,9 +1,29 @@
 .login-modal {
-  width: 300px;
+  width: 600px;
   height: 300px;
   padding: 20px;
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 25%;
   left: 50%;
-  margin: -70px 0 0 -170px;
+  margin: -75px -300px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  .facebook-login {
+    text-align: left;
+    color: white;
+    background-color: #3f5c9a;
+    width: 100%;
+  }
+  .google-login {
+    text-align: left;
+    color: white;
+    background-color: #d34836;
+    width: 100%;
+  }
+  .btn:hover {
+    opacity: 0.75;
+  }
+  .login-info {
+    border-right: 1px solid #ccc;
+  }
 }
