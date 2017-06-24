@@ -8,9 +8,9 @@ class SimpleMapPage extends Component {
     const { center, zoom, pumpDetails } = this.props;
     const showMarkers = pumpDetails.map(pumpDetail =>
       <Marker
-        key={pumpDetail.pump_id}
-        lat={pumpDetail.latitude}
-        lng={pumpDetail.longitude}
+        key={pumpDetail.pumpId}
+        lat={pumpDetail.coordinates.lat}
+        lng={pumpDetail.coordinates.lng}
         pumpDetail={pumpDetail}
       />,
     );
