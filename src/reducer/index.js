@@ -7,7 +7,7 @@ const fillMeUpState = {
     user: {},
     token: '',
   },
-  profileDetail: [{
+  pumpDetails: [{
     pump_id: 'abcdefg',
     user_id: '1234567',
     name: 'Rajat Petrol Service',
