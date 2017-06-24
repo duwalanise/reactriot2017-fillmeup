@@ -11,12 +11,11 @@ const NavDropdown = ({ userDetail, signOut }) =>
         (
           <li className="dropdown user-info">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-              <div>Hello</div>
+              <div>{userDetail.email}</div>
             </a>
             <ul className="dropdown-menu">
-              <li>My Profile</li>
-              <hr />
-              <li onClick={() => signOut()}>Sign Out</li>
+              <li><Link to="/profile">My Profile</Link></li>
+              <li onClick={() => signOut()}><Link to="/">Sign Out</Link></li>
             </ul>
           </li>
         ) :

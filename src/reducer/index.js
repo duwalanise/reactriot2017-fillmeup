@@ -9,7 +9,7 @@ const fillMeUpState = {
 const fillMeUpReducer = (state = fillMeUpState, action) => {
   switch (action.type) {
     case 'SET_LOGGED_IN_USER' :
-      return { ...state, userDetail: action.payload };
+      return { ...state, userDetail: action.payload.user };
     case 'REMOVED_LOGGED_IN_USER' :
       return { ...state, userDetail: null };
     default:

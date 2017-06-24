@@ -22,7 +22,7 @@ class Navigation extends Component {
               <span className="icon-bar" />
             </button>
             <IndexLink to="/" className="navbar-brand">
-              <span>A</span>
+              <a>A</a>
             </IndexLink>
           </div>
           <div>
@@ -31,7 +31,7 @@ class Navigation extends Component {
                 {
                   userDetail ?
                   (
-                    <li>My Pumps</li>
+                    <li><Link to="/pumps" activeClassName="activeNav">My Pump</Link></li>
                   ) :
                   null
                 }
