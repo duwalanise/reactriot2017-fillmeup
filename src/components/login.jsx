@@ -46,61 +46,75 @@ class Login extends Component {
   handleGoogleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
     const { email, password, signIn } = this.state;
     return (<div className="login-modal">
-      <form onSubmit={this.handleSubmit}>
-        <div className="row">
-          <div className="col-xs-12">
-            <div className="form-group">
-              <input
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={email}
-                className="form-control"
-                required
-                onChange={this.handleChange}
-              />
+      <div className="row">
+        <div className="col-xs-6 login-info">
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    className="form-control"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    className="form-control"
+                    required
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="form-group">
+                  <button
+                    className="btn btn-primary form-control"
+                  >{ signIn ? 'Sign In' : 'Sign Up'}</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="col-xs-6">
+          <div className="row">
+            <div className="col-xs-12">
+              <div className="form-group">
+                <button className="btn facebook-login"><i className="fa fa-facebook" />&nbsp;Facebook</button>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <div className="form-group">
+                <button className="btn google-login"><i className="fa fa-google" />&nbsp;Google</button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <div className="form-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                className="form-control"
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <div className="form-group">
-              <button
-                className="btn btn-primary form-control"
-              >{ signIn ? 'Sign In' : 'Sign Up'}</button>
-            </div>
-          </div>
-        </div>
-      </form>
-      <div className="social-signin">
-        <button className="fb" onClick={this.props.onClick}><i className="fa fa-facebook" aria-hidden="true" /></button>
-        <button className="tw" onClick={this.props.onClick}><i className="fa fa-twitter" aria-hidden="true" /></button>
       </div>
-      <a href="#">Lost your password ?</a>
-      <div className="btn-primary" onClick={() => this.handleGoogleSignIn()}>Click</div>
     </div>);
   }
 }

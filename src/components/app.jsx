@@ -20,7 +20,6 @@ class App extends Component {
       }
     });
   }
- 
 
   render() {
     const { userDetail, children } = this.props;
