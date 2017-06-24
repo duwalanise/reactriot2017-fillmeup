@@ -8,7 +8,7 @@
     "dev": "webpack -d --watch",
     "build": "node_modules/webpack/bin/webpack -p",
     "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
+    "postinstall": "node_modules/webpack/bin/webpack -p"
   },
   "repository": {
     "type": "git",
