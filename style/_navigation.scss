@@ -1,0 +1,51 @@
+  .navbar {
+    border-radius: 0;
+    background: #333333;
+    box-shadow: 0px 2px 3px 3px #cccccc;
+    .nav {
+      a:link, a:hover, a:active {
+        background: inherit;
+      }
+    }
+  }
+
+@media screen and (min-width: 766px) {
+  .navbar {
+    li {
+      cursor: pointer;
+      &.user-info {
+        &:hover:after {
+          width: 0;
+        }
+        li:hover:after {
+          width: 0;
+        }
+      }
+    }
+    li:after,
+    .activeNav:after {
+      display: block;
+      position: absolute;
+      left: 5%;
+      width: 0;
+      height: 3px;
+      content: "";
+      -webkit-transition: width 0.3s;
+      -moz-transition: width 0.3s;
+      -o-transition: width 0.3s;
+      transition: width 0.3s;
+      background-color: #ffffff;
+      bottom: 0;
+    }
+    .activeNav:after {
+      width: 90%;
+    }
+    li:hover:after {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 766px) {
+
+}
