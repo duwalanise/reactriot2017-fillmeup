@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
 import PumpModalBox from './pump_detail_modal.jsx';
+import Token from './token.jsx';
 
 
 class PumpDetail extends Component {
@@ -97,9 +98,23 @@ class PumpDetail extends Component {
     ];
   }
 
+  buildToken(pumpId, tokens) {
+    const currentToken = tokens.filter(el => el.pumpId === pumpId);
+    return currentToken.map(token =>
+      <div key={token.tokenId}>
+        <div className="col-xs-6">
+          <h5>{token.tokenId}</h5>
+        </div>
+        <div className="col-xs-6">
+          <h5>{token.quantity} liters</h5>
+        </div>
+      </div>,
+    );
+  }
+
   render() {
     const currentUserId = this.props.params.uid;
-    const pumpDetails = this.props.pumpDetails;
+    const { pumpDetails, tokens } = this.props;
     const currentPump = pumpDetails.filter(el => el.uid === currentUserId);
     if (pumpDetails.length === 0 || currentPump.length === 0) {
       return (
@@ -112,6 +127,13 @@ class PumpDetail extends Component {
         </div>
       );
     }
+    const pieChartOptions = {
+      colors: ['#faa74a', '#08b'],
+      fontName: 'Nunito Sans',
+      height: 300,
+      title: 'Today\'s Activities',
+      titleTextStyle: { fontSize: 12 },
+    };
     const {
       columnChartColumns,
       columnChartOptions,
@@ -185,6 +207,31 @@ class PumpDetail extends Component {
                 columns={columnChartColumns}
               />
               <PumpModalBox pumpDetail={pump} />
+              <div className="row">
+                <div className="col-xs-6 border-right">
+                  <div className="row">
+                    <div className="col-xs-6">
+                      <h5><strong>Token ID</strong></h5>
+                    </div>
+                    <div className="col-xs-6">
+                      <h5><strong>Quantities</strong></h5>
+                    </div>
+                    {this.buildToken(pump.pumpId, tokens)}
+                  </div>
+                </div>
+                <div className="col-xs-6">
+                  <CustomChart
+                    chartType="PieChart"
+                    chartData={[
+                      ['Supply', 'Sales'],
+                      ['Consumption', Number(pump.consumptionToday || 0)],
+                      ['Distribution', Number(pump.distriputionToday || 0)],
+                    ]}
+                    chartId={`pie-chart-${pump.pumpId}`}
+                    options={pieChartOptions}
+                  />
+                </div>
+              </div>
             </div>,
           )}
         </div>
@@ -195,6 +242,7 @@ class PumpDetail extends Component {
 
 const mapStateToProps = state => ({
   pumpDetails: state.pumpDetails,
+  tokens: state.tokens,
 });
 
 export default connect(mapStateToProps)(PumpDetail);
@@ -202,4 +250,5 @@ export default connect(mapStateToProps)(PumpDetail);
 PumpDetail.propTypes = {
   pumpDetails: PropTypes.arrayOf(PropTypes.object),
   params: PropTypes.objectOf(PropTypes.any),
+  tokens: PropTypes.arrayOf(PropTypes.object),
 };
