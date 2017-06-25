@@ -6,10 +6,11 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test --compilers js:babel-core/register --recursive --require test/ignore_styles.js",
     "dev": "webpack -d --watch",
-    "build": "webpack -p",
+    "build": "NODE_ENV=production webpack -p",
     "start": "node server.js",
     "prod": "NODE_ENV=production node server.js",
-    "preinstall": "npm install -g webpack"
+    "preinstall": "npm install -g webpack",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
