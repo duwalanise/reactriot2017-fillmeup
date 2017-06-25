@@ -10,7 +10,7 @@ class MarkerInfoTemplate extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: '', disabled: false, token: null };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,10 +31,15 @@ class MarkerInfoTemplate extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const token = firebase.database().ref().child('token');
+    const generatedToken = this.generateId();
     token.push({
-      tokenId: this.generateId(),
+      tokenId: generatedToken,
       quantity: this.state.value,
       pumpId: this.props.pumpDetail.pumpId,
+    }).then(() => {
+      this.setState({ disabled: true, token: generatedToken });
+    }).catch(() => {
+      this.setState({ disabled: false });
     });
   }
 
@@ -53,6 +58,36 @@ class MarkerInfoTemplate extends Component {
       title: 'Daily Activities',
       titleTextStyle: { fontSize: 12 },
     };
+    const showSuccess = this.state.disabled ? (<span className="success-info">SUCCESS !!</span>) : null;
+    const showFormContent = !this.state.disabled ?
+    (<div className="row">
+      <div className="col-xs-4">
+        <label htmlFor="contact">Fill me up :</label>
+      </div>
+      <div className="col-xs-8">
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <div className="form-group">
+            <div className="input-group">
+              <input
+                type="number"
+                className="form-control input-sm"
+                name="booked_fuel"
+                placeholder="No of liters"
+                min="1"
+                required
+                onChange={this.handleChange}
+              />
+              <div className="input-group-addon">liters</div>
+            </div>
+          </div>
+          <button type="submit" className="btn btn-primary btn-xs">Submit</button>
+        </form>
+      </div>
+    </div>
+    ) : (
+      <span className="token-info">Your Token ID : {this.state.token}<br /> <strong>Don't forget this token ID </strong></span>
+    );
+
     const displayInformation = !hasAddress(pumpDetail) ?
       (<div className="container-fluid no-info">
         { handleInfoClose }
@@ -102,30 +137,7 @@ class MarkerInfoTemplate extends Component {
                 <p>{setDashOnNull(Number(pumpDetail.distriputionToday) - Number(pumpDetail.consumptionToday))} liters</p>
               </div>
             </div>
-            <div className="row">
-              <div className="col-xs-4">
-                <label htmlFor="contact">Fill me up :</label>
-              </div>
-              <div className="col-xs-8">
-                <form onSubmit={e => this.handleSubmit(e)}>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <input
-                        type="number"
-                        className="form-control input-sm"
-                        name="booked_fuel"
-                        placeholder="No of liters"
-                        min="1"
-                        required
-                        onChange={this.handleChange}
-                      />
-                      <div className="input-group-addon">liters</div>
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-xs">Submit</button>
-                </form>
-              </div>
-            </div>
+            { showFormContent }
           </div>
           <div className="col-xs-4">
             <CustomChart
@@ -138,6 +150,7 @@ class MarkerInfoTemplate extends Component {
               chartId={`pie-chart-${pumpDetail.pumpId}`}
               options={pieChartOptions}
             />
+            { showSuccess }
           </div>
         </div>
       </div>);

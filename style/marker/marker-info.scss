@@ -61,3 +61,21 @@
   left: 50%;
   position: absolute;
 }
+
+.success-info {
+  color: #fff;
+  background: green;
+  padding: 5px 10px;
+  margin-left: 40px;
+}
+
+.token-info {
+  position: absolute;
+  padding: 5px;
+  font-weight: 900;
+  background: #eee;
+  line-height: 16px;
+  strong {
+    color: red;
+  }
+}
