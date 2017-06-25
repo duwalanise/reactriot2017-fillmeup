@@ -35,6 +35,14 @@ class MarkerInfoTemplate extends Component {
             <p>{setDashOnNull(pumpDetail.open_hours)}</p>
           </div>
         </div>
+        <div className="row">
+          <div className="col-xs-3">
+            <label htmlFor="contact">Contact :</label>
+          </div>
+          <div className="col-xs-9">
+            <p>{setDashOnNull(pumpDetail.contact)}</p>
+          </div>
+        </div>
       </div>);
     return (
       <div className="marker-information">
