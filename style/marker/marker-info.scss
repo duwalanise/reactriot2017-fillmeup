@@ -1,27 +1,60 @@
 .marker-information {
-    width: 400px;
+  width: 500px;
+  color: #454545;
+  background-color: #fff;
+  border-radius: 5px;
+  top: -248px;
+  left: -255px;
+  border: solid 10px transparent;
+  position: absolute;
+  z-index: 1;
+  text-transform: capitalize;
+  padding-top: 10px;
+  -webkit-box-shadow: 0px 1px 7px 3px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 1px 7px 3px rgba(204,204,204,1);
+  box-shadow: 0px 1px 7px 3px rgba(204,204,204,1);
+  label, p {
+    font-size: 12px;
+  }
+  [id^=pie-chart] {
+    width: 150px !important;
+    height: auto !important;
+    display: inline-block;
+    margin-top: 25px;
+  }
+  .input-sm {
+    height: 20px;
+  }
+  .input-group-addon {
+    padding: 0px 12px;
+    font-size: 12px;
+  }
+  h4 span {
+    font-size: 12px;
+    background: #08b;
     color: #fff;
-    background-color: #454545;
-    border-radius: 5px;
-    margin: -155px -180px;
-    border: solid 10px transparent;
-    position: absolute;
-    z-index: 1;
+    padding: 2px 5px;
+    position: relative;
+    top: -2px;
+    left: 5px;
+    font-weight: 100;
+  }
 }
 .close-icon {
-    float: right;
-    margin: -5px -17px;
-    cursor: pointer;
-    font-size: 16px;
+  float: right;
+  margin: -5px -17px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .marker .marker-information:after {
-    border-left: solid transparent 10px;
-    border-right: solid transparent 10px;
-    border-top: solid #454545 10px;
-    bottom: -20px;
-    content: " ";
-    left: 50%;
-    margin-left: -25px;
-    position: absolute;
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-top: solid #fff 10px;
+  bottom: -20px;
+  content: " ";
+  left: 50%;
+  position: absolute;
 }
