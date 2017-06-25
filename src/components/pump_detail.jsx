@@ -172,7 +172,7 @@ class PumpDetail extends Component {
               <CustomChart
                 chartType="ColumnChart"
                 chartData={this.setupChartData(columnData, columnChartHeader)}
-                chartId={`workstream-column-chart-${pump.pumpId}`}
+                chartId={`column-chart-${pump.pumpId}`}
                 options={columnChartOptions}
                 columns={columnChartColumns}
               />
