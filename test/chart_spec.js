@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import CustomChart from '../src/components/chart.jsx';
 
-describe('CustomChart', () => {
+describe('<CustomChart />', () => {
   const wrapper = shallow(<CustomChart
     chartData={[]}
     chartType="test"
