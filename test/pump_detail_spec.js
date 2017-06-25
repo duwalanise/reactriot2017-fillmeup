@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
 import { PumpDetail } from '../src/components/pump_detail.jsx';
 
 describe('<PumpDetail />', () => {
