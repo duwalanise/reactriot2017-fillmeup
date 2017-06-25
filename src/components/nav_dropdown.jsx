@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-const NavDropdown = ({ userDetail, signOut }) =>
+export const NavDropdown = ({ userDetail, signOut }) =>
   (
     <ul className="nav navbar-nav navbar-right">
       {
