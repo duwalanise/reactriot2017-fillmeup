@@ -46,6 +46,9 @@ body {
   }
   [id^=column-chart] {
     margin-top: -35px;
+    height: 360px !important;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
   }
   .add-new-pump {
     position: absolute;
@@ -58,6 +61,9 @@ body {
   .fa-pencil-square-o {
     margin-left: 15px;
     cursor: pointer;
+  }
+  .border-left {
+    border-right: 1px solid #ddd;
   }
 }
 
