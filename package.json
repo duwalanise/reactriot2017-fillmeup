@@ -9,7 +9,7 @@
     "build": "./node_modules/webpack/bin/webpack -p",
     "start": "node server.js",
     "prod": "NODE_ENV=production node server.js",
-    "preinstall": "npm cache clean && npm install"
+    "preinstall": "npm install"
   },
   "repository": {
     "type": "git",
