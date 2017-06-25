@@ -6,7 +6,7 @@ class MarkerTag extends Component {
     const color = this.props.status.toLowerCase() === 'open' ? 'green' : 'red';
     return (
       <div className={`${color}-marker`} onClick={() => this.props.onClick()} >
-        <img alt="" src="../../../style/marker/fuel.png" />
+        <i className="fa fa-tint fa-3x" />
       </div>
     );
   }
