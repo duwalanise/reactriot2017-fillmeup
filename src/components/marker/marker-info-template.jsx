@@ -9,7 +9,8 @@ class MarkerInfoTemplate extends Component {
     const handleInfoClose = (
       <span className="close-icon" onClick={() => this.props.onClick()} ><i className="fa fa-times" aria-hidden="true" /></span>
     );
-    const displayInformation = R.has('address') ?
+    const hasAddress = R.has('address');
+    const displayInformation = !hasAddress(pumpDetail) ?
       (<div className="container-fluid no-info">
         { handleInfoClose }
         <h4>No Information Available.</h4>
