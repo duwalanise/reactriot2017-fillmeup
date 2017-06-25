@@ -22,7 +22,7 @@ class Navigation extends Component {
               <span className="icon-bar" />
             </button>
             <IndexLink to="/" className="navbar-brand">
-              <img src="../../images/fmu-icon.png" alt="fmu-icon" className="app-icon" />
+              <img src="/dist/fmu-icon.png" alt="fmu-icon" className="app-icon" />
             </IndexLink>
           </div>
           <div>
