@@ -72,6 +72,7 @@ class NewPump extends Component {
     evt.preventDefault();
     const dbref = firebase.database().ref();
     dbref.child('pumps').push(this.state);
+    browserHistory.push(`/pumps/${this.props.uid}`);
   }
 
   handleAddressChange(evt) {
@@ -136,3 +137,7 @@ class NewPump extends Component {
 export default connect(store => ({
   uid: store.userDetail.uid,
 }))(NewPump);
+
+NewPump.propTypes = {
+  uid: PropTypes.string,
+};
