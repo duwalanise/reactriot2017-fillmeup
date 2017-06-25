@@ -59,6 +59,7 @@
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^4.1.1",
     "sinon": "^1.17.5",
-    "style-loader": "^0.16.0"
+    "style-loader": "^0.16.0",
+    "proxyquire": "^1.8.0"
   }
 }

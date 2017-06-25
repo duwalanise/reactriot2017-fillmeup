@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import * as router from 'react-router';
 import * as firebase from 'firebase';
 
 class Login extends Component {
@@ -21,10 +21,6 @@ class Login extends Component {
     this.handleSignInToggle = this.handleSignInToggle.bind(this);
   }
 
-  componentDidMount() {
-
-  }
-
   handleChange(evt) {
     const { name, value } = evt.target;
     this.setState({
@@ -36,15 +32,11 @@ class Login extends Component {
     evt.preventDefault();
     const { email, password, signIn } = this.state;
     const auth = firebase.auth();
-    let response;
-    if (signIn) {
-      response = auth.signInWithEmailAndPassword(email, password);
-    } else {
-      response = auth.createUserWithEmailAndPassword(email, password);
-    }
-    response.then(() => { browserHistory.push('/'); })
-      .catch((error) => {
-        console.log(error);
+    const response = (signIn) ?
+      auth.signInWithEmailAndPassword(email, password) :
+      auth.createUserWithEmailAndPassword(email, password);
+    response.then(() => router.browserHistory.push('/'))
+      .catch(() => {
         this.setState({ hasError: true });
       });
   }
@@ -67,9 +59,8 @@ class Login extends Component {
   handleSignIn(service) {
     const provider = this.getProvider(service);
     firebase.auth().signInWithPopup(provider)
-      .then(() => { browserHistory.push('/'); })
-      .catch((error) => {
-        console.log(error);
+      .then(() => router.browserHistory.push('/'))
+      .catch(() => {
         this.setState({ hasError: true });
       });
   }
@@ -100,12 +91,11 @@ class Login extends Component {
   }
 
   handlePasswordResetClick() {
-    firebase.auth().sendPasswordResetEmail(this.state.email)
+    return firebase.auth().sendPasswordResetEmail(this.state.email)
       .then(() => {
-        this.setState({ resetSuccess: true, hasError: false });
+        this.setState({ resetSuccess: true, hasError: true });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         this.setState({ resetSuccess: false, hasError: true });
       });
   }
