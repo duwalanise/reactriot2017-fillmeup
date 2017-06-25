@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import CompressionPlugin from 'compression-webpack-plugin';
 
 const APP_DIR = path.resolve(__dirname, 'src');
 const BUILD_DIR = path.resolve(__dirname, 'dist');
@@ -16,6 +17,13 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify(env),
       },
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|html)$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
   module: {
