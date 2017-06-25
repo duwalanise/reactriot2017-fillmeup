@@ -36,7 +36,7 @@ class SearchBar extends Component {
   render() {
     const { address } = this.state;
     return (<div className="search-modal">
-      <label htmlFor="Search">Search Place :</label>
+      <label htmlFor="Search">Search Location :</label>
       <input
         ref={input => this.textInput = input}
         type="text"

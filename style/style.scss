@@ -115,9 +115,10 @@ body {
   left: 0;
   top: 100px;
   width: 350px;
-  background: #fff;
   padding: 20px;
   -webkit-box-shadow: 0px 1px 7px 3px #cccccc;
   -moz-box-shadow: 0px 1px 7px 3px #cccccc;
   box-shadow: 0px 1px 7px 3px #cccccc;
+  background: -webkit-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background-size: 120px;
 }
