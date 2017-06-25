@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, browserHistory } from 'react-router';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux';
-import { userLogin, userLogOut, storePumps } from '../action';
+import { userLogin, userLogOut, storePumps, storeToken } from '../action';
 import Navigation from './navigation.jsx';
 
 export class App extends Component {
@@ -16,6 +16,10 @@ export class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.props.dispatch(userLogin(user));
+        const tokenRef = firebase.database().ref().child('token');
+        tokenRef.on('value', snap => (
+          this.props.dispatch(storeToken(snap.val()))
+        ));
       } else {
         this.props.dispatch(userLogOut());
       }

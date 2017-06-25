@@ -17,6 +17,12 @@ export const storePumps = (pumps) =>
     payload: pumps,
   });
 
+export const storeToken = (token) =>
+  ({
+    type: 'STORE_TOKEN_DETAILS',
+    payload: token,
+  });
+
 export const updateMarkerState = (pumpId) =>
   ({
     type: 'UPDATE_MARKER_STATE',
