@@ -18,7 +18,7 @@ Ensure you have the minimum requirements specified in Prerequisites. To set up a
 
 Do these commands on separate terminals:
 - ```npm run dev``` bundles code base through webpack
-- ```http-server``` port defaults to 8080, additional command-line options can be found at https://github.com/indexzero/http-server
+- ```http-server``` creates server with default port 8080, additional command-line options can be found at https://github.com/indexzero/http-server
 
 ## Running the tests
 
@@ -30,14 +30,14 @@ npm run build
 
 ## Tools & Technologies
 
-Firebase
-React
-React-redux
-React-router
-Webpack
-Babel
-Eslint
-SCSS 
+- Firebase
+- React
+- React-redux
+- React-router
+- Webpack
+- Babel
+- Eslint
+- SCSS 
 
 ## Authors
 
