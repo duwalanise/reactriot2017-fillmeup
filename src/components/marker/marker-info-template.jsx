@@ -75,7 +75,7 @@ class MarkerInfoTemplate extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <div className="input-group">
-                      <input type="number" className="form-control input-sm" name="booked_fuel" placeholder="No of liters" />
+                      <input type="number" className="form-control input-sm" name="booked_fuel" placeholder="No of liters" min="1" required />
                       <div className="input-group-addon">liters</div>
                     </div>
                   </div>
