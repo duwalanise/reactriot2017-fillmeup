@@ -11,7 +11,7 @@ export const NavDropdown = ({ userDetail, signOut }) =>
         (
           <li className="dropdown user-info">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-              <div>{userDetail.email}</div>
+              <div><i className="fa fa-user-circle" /> {userDetail.email}</div>
             </a>
             <ul className="dropdown-menu">
               <li><Link to="/pumps/new">Add Station</Link></li>
