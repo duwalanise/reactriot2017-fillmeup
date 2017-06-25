@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
+import PumpModalBox from './pump_detail_modal.jsx';
 
 
 class PumpDetail extends Component {
@@ -76,11 +77,8 @@ class PumpDetail extends Component {
         ['01/06/2017', 8500, 7500],
         ['01/07/2017', 3500, 1500],
       ],
-      switchLabel: 'OPEN',
-      switchChecked: true,
       tabChange: '',
     };
-    this.handleSwitchChange = this.handleSwitchChange.bind(this);
   }
 
   setupChartData(data, header) {
@@ -88,21 +86,6 @@ class PumpDetail extends Component {
       datum[0] = new Date(datum[0]);
     });
     return [header].concat(data);
-  }
-
-  checkStatus(currentPump) {
-    this.setState({
-      switchLabel: currentPump.status,
-      switchChecked: currentPump.status.toUpperCase() === 'OPEN',
-    });
-  }
-
-  handleSwitchChange() {
-    const status = this.state.switchLabel === 'OPEN' ? 'CLOSED' : 'OPEN';
-    this.setState({
-      switchChecked: status === 'OPEN',
-      switchLabel: status,
-    });
   }
 
   render() {
@@ -120,19 +103,19 @@ class PumpDetail extends Component {
         </div>
       );
     }
-    // this.checkStatus(currentPump[0]);
     const {
       columnChartColumns,
       columnChartOptions,
       columnChartHeader,
       columnData,
-      switchLabel,
-      switchChecked,
       tabChange,
     } = this.state;
     return (
       <div className="pump-detail-wrapper">
-        <button className="btn btn-primary add-new-pump">Add New</button>
+        <button
+          className="btn btn-primary add-new-pump"
+          onClick={() => browserHistory.push('/pumps/new')}
+        >Add New</button>
         <div className="row">
           <div className="col-xs-12">
             <ul className="nav nav-tabs" id={`change_${tabChange}`}>
@@ -155,10 +138,15 @@ class PumpDetail extends Component {
                 <div className="pump-detail">
                   <div className="col-xs-6">
                     <h4>{pump.name}
+                      <i
+                        className="fa fa-pencil-square-o"
+                        title="Edit"
+                        data-toggle="modal"
+                        data-target={`#${pump.pumpId.slice(1, 6)}`}
+                      />
                       <Switch
-                        label={switchLabel}
-                        isChecked={switchChecked}
-                        onChange={this.handleSwitchChange}
+                        label={pump.status}
+                        isChecked={pump.status.toUpperCase() === 'OPEN'}
                         isRound
                       />
                     </h4>
@@ -188,6 +176,7 @@ class PumpDetail extends Component {
                 options={columnChartOptions}
                 columns={columnChartColumns}
               />
+              <PumpModalBox pumpDetail={pump} />
             </div>,
           )}
         </div>
