@@ -30,6 +30,7 @@ class Marker extends Component {
         <MarkerTag
           status={pumpDetail.status}
           onClick={this.handleClick}
+          name={pumpDetail.name}
         />
       </div>
     );

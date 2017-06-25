@@ -5,14 +5,15 @@
   width: 80px;
   height: 23px;
   margin-left: 10px;
+  text-transform: capitalize;
   input {
     display: none;
     &:checked + .slider {
       background-color: #1abc9c;
       .slider-label {
-        top: 6px;
+        top: 3px;
         left: 18px;
-        font-size: 11px;
+        font-size: 14px;
       }
       &:before {
         -webkit-transform: translateX(57px);
@@ -32,9 +33,9 @@
     -webkit-transition: all .6s ease;
     transition: all .6s ease;
     .slider-label {
-      top: 7px;
+      top: 4px;
       left: 28px;
-      font-size: 12px;
+      font-size: 14px;
       position: absolute;
       color: #fff;
       -webkit-transition: left .6s ease;

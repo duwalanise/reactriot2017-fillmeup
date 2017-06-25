@@ -5,7 +5,7 @@ class MarkerTag extends Component {
   render() {
     const color = this.props.status.toLowerCase() === 'open' ? 'green' : 'red';
     return (
-      <div className={`${color}-marker`} onClick={() => this.props.onClick()} >
+      <div className={`${color}-marker`} onClick={() => this.props.onClick()} title={this.props.name}>
         <i className="fa fa-tint fa-3x" />
       </div>
     );
@@ -20,4 +20,6 @@ MarkerTag.defaultProps = {
 
 MarkerTag.propTypes = {
   status: PropTypes.string,
+  name: PropTypes.string,
+  onClick: PropTypes.func,
 };
