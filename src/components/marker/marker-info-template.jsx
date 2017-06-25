@@ -65,7 +65,9 @@ class MarkerInfoTemplate extends Component {
           <div className="col-xs-8">
             <div className="row">
               <div className="col-xs-12">
-                <h4>{pumpDetail.name} <span>{pumpDetail.status}</span></h4>
+                <h4>{pumpDetail.name} <span
+                  className={pumpDetail.status === 'close' ? 'status-close' : ''}
+                >{pumpDetail.status}</span></h4>
               </div>
             </div>
             <div className="row">
