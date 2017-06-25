@@ -101,6 +101,7 @@ class NewPump extends Component {
           className="form-control"
           style={{ marginBottom: '15px' }}
           onChange={this.handleAddressChange}
+          autoComplete="off"
         />
         <Input
           type="text"
@@ -111,7 +112,7 @@ class NewPump extends Component {
           handleChange={this.handleChange}
         />
         <div className="choose-location">
-          <GoogleMap center={[coordinates.lat, coordinates.lng]} zoom={10} onClick={this.mapClick}>
+          <GoogleMap center={[coordinates.lat, coordinates.lng]} zoom={14} onClick={this.mapClick}>
             <Marker
               lat={coordinates.lat}
               lng={coordinates.lng}

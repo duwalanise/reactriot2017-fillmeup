@@ -1,10 +1,43 @@
 import React, { PropTypes, Component } from 'react';
 import R from 'ramda';
+import * as firebase from 'firebase';
 import '../../../style/marker/marker-info.scss';
 import { setDashOnNull } from '../../components/utilities/helper';
 import CustomChart from '../chart.jsx';
 
+
 class MarkerInfoTemplate extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  generateId() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return `${text}${Date.now()}`;
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const token = firebase.database().ref().child('token');
+    token.push({
+      tokenId: this.generateId(),
+      quantity: this.state.value,
+      pumpId: this.props.pumpDetail.pumpId,
+    });
+  }
+
   render() {
     const { pumpDetail } = this.props;
     const handleInfoClose = (
@@ -32,7 +65,9 @@ class MarkerInfoTemplate extends Component {
           <div className="col-xs-8">
             <div className="row">
               <div className="col-xs-12">
-                <h4>{pumpDetail.name} <span>{pumpDetail.status}</span></h4>
+                <h4>{pumpDetail.name} <span
+                  className={pumpDetail.status === 'close' ? 'status-close' : ''}
+                >{pumpDetail.status}</span></h4>
               </div>
             </div>
             <div className="row">
@@ -72,10 +107,18 @@ class MarkerInfoTemplate extends Component {
                 <label htmlFor="contact">Fill me up :</label>
               </div>
               <div className="col-xs-8">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={e => this.handleSubmit(e)}>
                   <div className="form-group">
                     <div className="input-group">
-                      <input type="number" className="form-control input-sm" name="booked_fuel" placeholder="No of liters" />
+                      <input
+                        type="number"
+                        className="form-control input-sm"
+                        name="booked_fuel"
+                        placeholder="No of liters"
+                        min="1"
+                        required
+                        onChange={this.handleChange}
+                      />
                       <div className="input-group-addon">liters</div>
                     </div>
                   </div>
