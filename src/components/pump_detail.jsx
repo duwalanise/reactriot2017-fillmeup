@@ -7,8 +7,7 @@ import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
 import PumpModalBox from './pump_detail_modal.jsx';
 
-class PumpDetail extends Component {
-
+export class PumpDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
