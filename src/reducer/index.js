@@ -9,7 +9,7 @@ const fillMeUpState = {
   },
   pumpDetails: [],
   userDetail: null,
-  tokens: null,
+  tokens: [],
 };
 
 const fillMeUpReducer = (state = fillMeUpState, action) => {
@@ -31,8 +31,8 @@ const fillMeUpReducer = (state = fillMeUpState, action) => {
       }
       return state;
     case 'STORE_TOKEN_DETAILS' :
-      const token = Object.keys(action.payload).map(key => action.payload[key]);
-      return { ...state, token };
+      const tokens = Object.keys(action.payload).map(key => action.payload[key]);
+      return { ...state, tokens };
     case 'UPDATE_MARKER_STATE' :
       return {
         ...state,
