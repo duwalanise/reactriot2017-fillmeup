@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import R from 'ramda';
 import * as firebase from 'firebase';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import '../../../style/marker/marker-info.scss';
 import { setDashOnNull } from '../../components/utilities/helper';
 import CustomChart from '../chart.jsx';
@@ -9,7 +10,7 @@ class MarkerInfoTemplate extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: '', disabled: false, token: null };
+    this.state = { value: '', disabled: false, token: null, copied: false };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -86,6 +87,16 @@ class MarkerInfoTemplate extends Component {
     ) : (pumpDetail.status === 'open' ? (
       <span className="token-info">
         Your Token ID : {this.state.token}
+        <CopyToClipboard
+          text={this.state.token}
+          onCopy={() => this.setState({ copied: true })}
+        >
+          <i className="fa fa-clipboard" aria-hidden="true" />
+        </CopyToClipboard>
+        {this.state.copied ? <span
+          style={{ marginLeft: '5px',
+            color: '#21955b' }}
+        >Copied.</span> : null}
         <br />
         <strong>Don't forget this token ID </strong>
       </span>
