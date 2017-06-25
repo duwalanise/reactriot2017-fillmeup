@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { userLogin, userLogOut, storePumps } from '../action';
 import Navigation from './navigation.jsx';
 
-class App extends Component {
+export class App extends Component {
   static signOut() {
     firebase.auth().signOut();
   }
