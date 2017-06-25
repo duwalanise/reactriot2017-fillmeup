@@ -5,6 +5,23 @@ import { setDashOnNull } from '../../components/utilities/helper';
 import CustomChart from '../chart.jsx';
 
 class MarkerInfoTemplate extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.value);
+  }
+
   render() {
     const { pumpDetail } = this.props;
     const handleInfoClose = (
@@ -72,10 +89,18 @@ class MarkerInfoTemplate extends Component {
                 <label htmlFor="contact">Fill me up :</label>
               </div>
               <div className="col-xs-8">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={e => this.handleSubmit(e)}>
                   <div className="form-group">
                     <div className="input-group">
-                      <input type="number" className="form-control input-sm" name="booked_fuel" placeholder="No of liters" min="1" required />
+                      <input
+                        type="number"
+                        className="form-control input-sm"
+                        name="booked_fuel"
+                        placeholder="No of liters"
+                        min="1"
+                        required
+                        onChange={this.handleChange}
+                      />
                       <div className="input-group-addon">liters</div>
                     </div>
                   </div>
