@@ -1,6 +1,8 @@
 const express = require('express');
+const compress = require('compression');
 
 const app = express();
+app.use(compress());
 app.use('/dist', express.static(`${__dirname}/dist`));
 
 app.get('*', (req, res) => {
@@ -8,5 +10,3 @@ app.get('*', (req, res) => {
 });
 
 app.listen(process.env.PORT || 8080);
-
-console.log('hello');
