@@ -7,7 +7,7 @@ import GoogleMap from 'google-map-react';
 import Input from './input.jsx';
 import Marker from './marker/marker.jsx';
 
-class NewPump extends Component {
+export class NewPump extends Component {
   constructor(props) {
     super(props);
     this.state = {
