@@ -5,8 +5,6 @@ import { browserHistory } from 'react-router';
 import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
 import PumpModalBox from './pump_detail_modal.jsx';
-import Token from './token.jsx';
-
 
 class PumpDetail extends Component {
 
