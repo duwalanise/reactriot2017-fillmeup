@@ -64,7 +64,7 @@
 
 .success-info {
   color: #fff;
-  background: green;
+  background: #21955b;
   padding: 3px 10px;
   margin-left: 40px;
 }
@@ -78,4 +78,12 @@
   strong {
     color: red;
   }
+}
+
+.fa-clipboard {
+  margin-left: 10px;
+  color: darkcyan;
+  border: 1px solid #748484;
+  padding: 2px;
+  border-radius: 5px;
 }
