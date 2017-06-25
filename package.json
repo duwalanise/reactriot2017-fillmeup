@@ -9,7 +9,8 @@
     "build": "webpack -p",
     "start": "node server.js",
     "prod": "NODE_ENV=production node server.js",
-    "preinstall": "npm install -g webpack"
+    "preinstall": "npm install -g webpack",
+    "postinstall": "webpack -p"
   },
   "repository": {
     "type": "git",
