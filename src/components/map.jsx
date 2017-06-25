@@ -3,22 +3,29 @@ import GoogleMap from 'google-map-react';
 import { connect } from 'react-redux';
 import Marker from './marker/marker.jsx';
 import { updateMarkerState } from './../action';
+import SearchBar from './search_bar.jsx';
 
 export class SimpleMapPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pumpId: null,
+      center: this.props.center,
     };
     this.setPumpId = this.setPumpId.bind(this);
+    this.setCenter = this.setCenter.bind(this);
   }
 
   setPumpId(id) {
     this.props.dispatch(updateMarkerState(id));
   }
 
+  setCenter(center) {
+    this.setState({ center });
+  }
+
   render() {
-    const { center, zoom, pumpDetails } = this.props;
+    const { zoom, pumpDetails } = this.props;
     const showMarkers = pumpDetails.map(pumpDetail =>
       <Marker
         key={pumpDetail.pumpId}
@@ -29,9 +36,15 @@ export class SimpleMapPage extends Component {
       />,
     );
     return (
-      <GoogleMap center={center} zoom={zoom}>
-        { showMarkers }
-      </GoogleMap>
+      <div>
+        <GoogleMap center={this.state.center} zoom={zoom}>
+          { showMarkers }
+        </GoogleMap>
+        <SearchBar
+          center={this.state.center}
+          setCenter={centers => this.setCenter(centers)}
+        />
+      </div>
     );
   }
 }

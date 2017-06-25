@@ -5,7 +5,6 @@ import '../../../style/marker/marker-info.scss';
 import { setDashOnNull } from '../../components/utilities/helper';
 import CustomChart from '../chart.jsx';
 
-
 class MarkerInfoTemplate extends Component {
 
   constructor(props) {

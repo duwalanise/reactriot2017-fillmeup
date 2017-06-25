@@ -109,3 +109,15 @@ body {
     z-index: 10;
   }
 }
+
+.search-modal {
+  position: fixed;
+  left: 0;
+  top: 100px;
+  width: 350px;
+  background: #fff;
+  padding: 20px;
+  -webkit-box-shadow: 0px 1px 7px 3px #cccccc;
+  -moz-box-shadow: 0px 1px 7px 3px #cccccc;
+  box-shadow: 0px 1px 7px 3px #cccccc;
+}
