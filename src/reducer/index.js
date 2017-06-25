@@ -31,7 +31,11 @@ const fillMeUpReducer = (state = fillMeUpState, action) => {
       }
       return state;
     case 'STORE_TOKEN_DETAILS' :
-      const tokens = Object.keys(action.payload).map(key => action.payload[key]);
+      const tokens = Object.keys(action.payload).map(key => {
+        const token = action.payload[key];
+        token.firebaseId = key;
+        return token;
+      });
       return { ...state, tokens };
     case 'UPDATE_MARKER_STATE' :
       return {

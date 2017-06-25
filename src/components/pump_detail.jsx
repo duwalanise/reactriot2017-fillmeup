@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import * as firebase from 'firebase';
 import CustomChart from './chart.jsx';
 import Switch from './switch.jsx';
 import PumpModalBox from './pump_detail_modal.jsx';
@@ -96,12 +97,16 @@ class PumpDetail extends Component {
     ];
   }
 
-  clickHandler(pumpId, token) {
-    console.log(pumpId);
+  clickHandler(pump, token) {
+    debugger;
+    const curpump = firebase.database().ref(`pumps/${pump.firebaseId}`);
+    const curToken = firebase.database().ref(`token/${token.firebaseId}`);
+    curpump.child('consumptionToday').set(pump.consumptionToday + token.quantity);
+    curToken.remove();
   }
 
-  buildToken(pumpId, tokens, clickHandler) {
-    const currentToken = tokens.filter(el => el.pumpId === pumpId);
+  buildToken(pump, tokens, clickHandler) {
+    const currentToken = tokens.filter(el => el.pumpId === pump.pumpId);
     return currentToken.map(token =>
       <div key={token.tokenId}>
         <div className="col-xs-5">
@@ -111,7 +116,7 @@ class PumpDetail extends Component {
           <h5>{token.quantity} liters</h5>
         </div>
         <div className="col-xs-2">
-          <i className="fa fa-check" onClick={() => clickHandler(pumpId, tokens)}></i>
+          <i className="fa fa-check" onClick={() => clickHandler(pump, token)}></i>
         </div>
       </div>,
     );
@@ -221,7 +226,7 @@ class PumpDetail extends Component {
                     <div className="col-xs-6">
                       <h5><strong>Quantities</strong></h5>
                     </div>
-                    {this.buildToken(pump.pumpId, tokens, this.clickHandler)}
+                    {this.buildToken(pump, tokens, this.clickHandler)}
                   </div>
                 </div>
                 <div className="col-xs-6">
