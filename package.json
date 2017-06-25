@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test --compilers js:babel-core/register --recursive",
-    "dev": "webpack -d --watch",
-    "build": "webpack -p",
+    "dev": "./node_modules/webpack/bin/webpac -d --watch",
+    "build": "./node_modules/webpack/bin/webpack -p",
     "start": "node server.js",
     "prod": "NODE_ENV=production node server.js",
-    "preinstall": "npm install -g webpack"
+    "preinstall": "npm cache clean && npm install"
   },
   "repository": {
     "type": "git",
