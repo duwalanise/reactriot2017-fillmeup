@@ -11,7 +11,6 @@ class PumpModalBox extends Component {
       address: pumpDetail.address,
       status: pumpDetail.status,
       contact: pumpDetail.contact,
-      consumptionToday: pumpDetail.consumptionToday,
       distriputionToday: pumpDetail.distriputionToday,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +32,6 @@ class PumpModalBox extends Component {
     curpump.child('address').set(this.state.address);
     curpump.child('status').set(this.state.status);
     curpump.child('contact').set(this.state.contact);
-    curpump.child('consumptionToday').set(this.state.consumptionToday);
     curpump.child('distriputionToday').set(this.state.distriputionToday);
     this.closeModal.click();
   }
@@ -44,7 +42,6 @@ class PumpModalBox extends Component {
       address,
       status,
       contact,
-      consumptionToday,
       distriputionToday,
     } = this.state;
     const pumpId = this.props.pumpDetail.pumpId;
@@ -90,17 +87,6 @@ class PumpModalBox extends Component {
                     id="pump-contact"
                     name="contact"
                     value={contact}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="pump-Consumption" className="control-label">Consumption:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="pump-consumption"
-                    name="consumptionToday"
-                    value={consumptionToday}
                     onChange={this.handleChange}
                   />
                 </div>
