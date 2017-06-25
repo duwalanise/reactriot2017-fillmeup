@@ -12,14 +12,14 @@ Fill Me Up is a simply to use, user-friendly bridge between petroleum suppliers 
 
 Ensure you have the minimum requirements specified in Prerequisites. To set up a development environment, run the following instructions.
 
-npm install
+```npm install```
   * installs all npm package dependencies
-npm install -g http-server
+```npm install -g http-server```
   * installs command-line http-server
 Do these commands on separate terminals:
-npm run dev
+```npm run dev```
   * bundles code base through webpack
-http-server
+```http-server```
   * port defaults to 8080
   * additional command-line options can be found at https://github.com/indexzero/http-server
 
