@@ -9,7 +9,7 @@ body {
   padding: 0;
   height: 100%;
   font-family: 'Nunito Sans', sans-serif !important;
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 @font-face {
@@ -27,7 +27,7 @@ body {
 .pump-detail-wrapper {
   width: 80%;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   padding: 10px;
   height: 80%;
   margin-top: 7%;
@@ -39,7 +39,7 @@ body {
     margin-left: 15px;
     margin-top: 20px;
   }
-  #workstream-column-chart {
+  [id^=workstream-column-chart] {
     margin-top: -35px;
   }
   .add-new-pump {
@@ -47,24 +47,28 @@ body {
     right: 0;
     top: -40px;
   }
+  .tab-content {
+    margin-top: 15px;
+  }
 }
 
 .choose-location {
   display: grid;
   height: 250px;
-  border: solid 1px #cccccc;
+  border: solid 1px #ddd;
   border-radius: 5px;
   margin-bottom: 15px;
 }
 
 .pump-detail {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   display: flex;
   margin: 0 15px;
   .other-detail {
     span {
       margin-right: 5px;
+      text-transform: capitalize;
     }
     .seperator {
       margin-right: 20px;

@@ -2,8 +2,21 @@ import React, { PropTypes, Component } from 'react';
 import GoogleMap from 'google-map-react';
 import { connect } from 'react-redux';
 import Marker from './marker/marker.jsx';
+import { updateMarkerState } from './../action';
 
 class SimpleMapPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pumpId: null,
+    };
+    this.setPumpId = this.setPumpId.bind(this);
+  }
+
+  setPumpId(id) {
+    this.props.dispatch(updateMarkerState(id));
+  }
+
   render() {
     const { center, zoom, pumpDetails } = this.props;
     const showMarkers = pumpDetails.map(pumpDetail =>
@@ -12,6 +25,7 @@ class SimpleMapPage extends Component {
         lat={pumpDetail.coordinates.lat}
         lng={pumpDetail.coordinates.lng}
         pumpDetail={pumpDetail}
+        setPumpId={id => this.setPumpId(id)}
       />,
     );
     return (

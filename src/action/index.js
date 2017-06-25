@@ -16,3 +16,9 @@ export const storePumps = (pumps) =>
     type: 'STORE_PUMP_DETAILS',
     payload: pumps,
   });
+
+export const updateMarkerState = (pumpId) =>
+  ({
+    type: 'UPDATE_MARKER_STATE',
+    payload: pumpId,
+  });

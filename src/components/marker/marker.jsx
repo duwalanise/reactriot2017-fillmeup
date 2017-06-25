@@ -6,18 +6,21 @@ import MarkerInfoTemplate from './marker-info-template.jsx';
 class Marker extends Component {
   constructor(props) {
     super(props);
-    this.state = { isMarkerOpen: false };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    const { isMarkerOpen } = this.state;
-    this.setState({ isMarkerOpen: !isMarkerOpen });
+    const { pumpDetail } = this.props;
+    if (!pumpDetail.isMarkerOpen) {
+      this.props.setPumpId(pumpDetail.pumpId);
+    } else {
+      this.props.setPumpId(null);
+    }
   }
-  
+
   render() {
     const { pumpDetail } = this.props;
-    const showInformation = this.state.isMarkerOpen && !R.isEmpty(pumpDetail) ?
+    const showInformation = pumpDetail.isMarkerOpen && !R.isEmpty(pumpDetail) ?
       <MarkerInfoTemplate pumpDetail={pumpDetail} onClick={this.handleClick} /> : null;
     return (
       <div className="marker">
