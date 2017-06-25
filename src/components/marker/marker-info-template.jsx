@@ -55,11 +55,11 @@ class MarkerInfoTemplate extends Component {
       fontName: 'Nunito Sans',
       width: 150,
       height: 150,
-      title: 'Daily Activities',
+      title: 'Today\'s Activities',
       titleTextStyle: { fontSize: 12 },
     };
     const showSuccess = this.state.disabled ? (<span className="success-info">SUCCESS !!</span>) : null;
-    const showFormContent = !this.state.disabled ?
+    const showFormContent = (!this.state.disabled && pumpDetail.status === 'open') ?
     (<div className="row">
       <div className="col-xs-4">
         <label htmlFor="contact">Fill me up :</label>
@@ -84,9 +84,13 @@ class MarkerInfoTemplate extends Component {
         </form>
       </div>
     </div>
-    ) : (
-      <span className="token-info">Your Token ID : {this.state.token}<br /> <strong>Don't forget this token ID </strong></span>
-    );
+    ) : (pumpDetail.status === 'open' ? (
+      <span className="token-info">
+        Your Token ID : {this.state.token}
+        <br />
+        <strong>Don't forget this token ID </strong>
+      </span>
+    ) : (<span className="token-info">No Token Available.</span>));
 
     const displayInformation = !hasAddress(pumpDetail) ?
       (<div className="container-fluid no-info">

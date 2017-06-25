@@ -96,15 +96,22 @@ class PumpDetail extends Component {
     ];
   }
 
-  buildToken(pumpId, tokens) {
+  clickHandler(pumpId, token) {
+    console.log(pumpId);
+  }
+
+  buildToken(pumpId, tokens, clickHandler) {
     const currentToken = tokens.filter(el => el.pumpId === pumpId);
     return currentToken.map(token =>
       <div key={token.tokenId}>
-        <div className="col-xs-6">
+        <div className="col-xs-5">
           <h5>{token.tokenId}</h5>
         </div>
-        <div className="col-xs-6">
+        <div className="col-xs-5">
           <h5>{token.quantity} liters</h5>
+        </div>
+        <div className="col-xs-2">
+          <i className="fa fa-check" onClick={() => clickHandler(pumpId, tokens)}></i>
         </div>
       </div>,
     );
@@ -214,7 +221,7 @@ class PumpDetail extends Component {
                     <div className="col-xs-6">
                       <h5><strong>Quantities</strong></h5>
                     </div>
-                    {this.buildToken(pump.pumpId, tokens)}
+                    {this.buildToken(pump.pumpId, tokens, this.clickHandler)}
                   </div>
                 </div>
                 <div className="col-xs-6">

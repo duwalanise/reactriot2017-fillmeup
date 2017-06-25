@@ -62,8 +62,8 @@ body {
     margin-left: 15px;
     cursor: pointer;
   }
-  .border-left {
-    border-right: 1px solid #ddd;
+  [id^=pie-chart] > div {
+    border-left: 1px solid #ddd;
   }
 }
 
