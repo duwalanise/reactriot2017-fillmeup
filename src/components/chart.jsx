@@ -19,6 +19,7 @@ class CustomChart extends Component {
     super(props);
     this.state = {
       columns: [],
+      options: [],
     };
   }
 
