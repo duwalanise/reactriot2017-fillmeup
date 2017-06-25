@@ -68,15 +68,6 @@ class PumpDetail extends Component {
         },
       ],
       columnChartHeader: ['Day', 'Supply', 'Sales'],
-      columnData: [
-        ['01/01/2017', 5000, 3000],
-        ['01/02/2017', 6000, 5000],
-        ['01/03/2017', 2500, 500],
-        ['01/04/2017', 4500, 2500],
-        ['01/05/2017', 6500, 4500],
-        ['01/06/2017', 8500, 7500],
-        ['01/07/2017', 3500, 1500],
-      ],
       tabChange: '',
     };
   }
@@ -86,6 +77,24 @@ class PumpDetail extends Component {
       datum[0] = new Date(datum[0]);
     });
     return [header].concat(data);
+  }
+
+  generateColumnData(data) {
+    if (data) {
+      return Object.keys(data).map((key) => {
+        const log = data[key];
+        return [log.date, log.supply, log.sales];
+      });
+    }
+    return [
+      ['01/01/2017', 0, 0],
+      ['01/02/2017', 0, 0],
+      ['01/03/2017', 0, 0],
+      ['01/04/2017', 0, 0],
+      ['01/05/2017', 0, 0],
+      ['01/06/2017', 0, 0],
+      ['01/07/2017', 0, 0],
+    ];
   }
 
   render() {
@@ -107,7 +116,6 @@ class PumpDetail extends Component {
       columnChartColumns,
       columnChartOptions,
       columnChartHeader,
-      columnData,
       tabChange,
     } = this.state;
     return (
@@ -171,7 +179,7 @@ class PumpDetail extends Component {
               <h4 className="log-week">Log of the past 1 week</h4>
               <CustomChart
                 chartType="ColumnChart"
-                chartData={this.setupChartData(columnData, columnChartHeader)}
+                chartData={this.setupChartData(this.generateColumnData(pump.log), columnChartHeader)}
                 chartId={`column-chart-${pump.pumpId}`}
                 options={columnChartOptions}
                 columns={columnChartColumns}
