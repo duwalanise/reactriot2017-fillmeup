@@ -1,13 +1,7 @@
-const express = require('express');
-const path = require('path');
+let express = require('express');
 
-const app = express();
+let app = express();
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/index.html`));
-  // __dirname : It will resolve to your project folder.
-});
+app.use(express.static(`${__dirname}/`));
 
 app.listen(process.env.PORT || 8080);
-
-console.log('8080');
