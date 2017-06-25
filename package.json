@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test --compilers js:babel-core/register --recursive",
+    "test": "./node_modules/mocha/bin/mocha test --compilers js:babel-core/register --recursive --require test/ignore_styles.js",
     "dev": "webpack -d --watch",
     "build": "webpack -p",
     "start": "node server.js",
