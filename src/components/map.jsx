@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Marker from './marker/marker.jsx';
 import { updateMarkerState } from './../action';
 
-class SimpleMapPage extends Component {
+export class SimpleMapPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
