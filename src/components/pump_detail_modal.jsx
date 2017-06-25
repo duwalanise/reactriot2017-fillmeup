@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as firebase from 'firebase';
 
 class PumpModalBox extends Component {
   constructor(props) {
     super(props);
     const pumpDetail = this.props.pumpDetail;
     this.state = {
-      pumpId: pumpDetail.pumpId,
-      uid: pumpDetail.uid,
       name: pumpDetail.name,
       address: pumpDetail.address,
       status: pumpDetail.status,
@@ -28,10 +27,15 @@ class PumpModalBox extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    // this.state.pumpId = this.generateId();
-    // evt.preventDefault();
-    // const dbref = firebase.database().ref();
-    // dbref.child('pumps').push(this.state);
+    const { firebaseId } = this.props.pumpDetail;
+    const curpump = firebase.database().ref(`pumps/${firebaseId}`);
+    curpump.child('name').set(this.state.name);
+    curpump.child('address').set(this.state.address);
+    curpump.child('status').set(this.state.status);
+    curpump.child('contact').set(this.state.contact);
+    curpump.child('consumptionToday').set(this.state.consumptionToday);
+    curpump.child('distriputionToday').set(this.state.distriputionToday);
+    this.closeModal.click();
   }
 
   render() {
@@ -126,7 +130,7 @@ class PumpModalBox extends Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-default" ref={(modal) => { this.closeModal = modal; }} data-dismiss="modal">Close</button>
                 <button type="submit" className="btn btn-primary">Save changes</button>
               </div>
             </form>
