@@ -1,8 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import R from 'ramda';
+import * as firebase from 'firebase';
 import '../../../style/marker/marker-info.scss';
 import { setDashOnNull } from '../../components/utilities/helper';
 import CustomChart from '../chart.jsx';
+
 
 class MarkerInfoTemplate extends Component {
 
@@ -17,9 +19,23 @@ class MarkerInfoTemplate extends Component {
     this.setState({ value: event.target.value });
   }
 
+  generateId() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return `${text}${Date.now()}`;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.value);
+    const token = firebase.database().ref().child('token');
+    token.push({
+      tokenId: this.generateId(),
+      quantity: this.state.value,
+      pumpId: this.props.pumpDetail.pumpId,
+    });
   }
 
   render() {
