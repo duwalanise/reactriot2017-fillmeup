@@ -65,6 +65,13 @@ body {
   [id^=pie-chart] > div {
     border-left: 1px solid #ddd;
   }
+  .fa-check-square-o {
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover {
+      color: #08b;
+    }
+  }
 }
 
 .choose-location {
@@ -92,5 +99,13 @@ body {
       font-size: 10px;
       color: #646464;
     }
+  }
+}
+
+.transition {
+  transition: all .3s ease;
+  &:hover {
+    transform: scale(1.1);
+    z-index: 10;
   }
 }

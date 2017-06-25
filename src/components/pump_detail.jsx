@@ -98,7 +98,6 @@ class PumpDetail extends Component {
   }
 
   clickHandler(pump, token) {
-    debugger;
     const curpump = firebase.database().ref(`pumps/${pump.firebaseId}`);
     const curToken = firebase.database().ref(`token/${token.firebaseId}`);
     curpump.child('consumptionToday').set(pump.consumptionToday + token.quantity);
@@ -116,7 +115,11 @@ class PumpDetail extends Component {
           <h5>{token.quantity} liters</h5>
         </div>
         <div className="col-xs-2">
-          <i className="fa fa-check" onClick={() => clickHandler(pump, token)}></i>
+          <i
+            className="fa fa-check-square-o transition"
+            onClick={() => clickHandler(pump, token)}
+            title="Click to approve the token."
+          ></i>
         </div>
       </div>,
     );
@@ -141,7 +144,7 @@ class PumpDetail extends Component {
       colors: ['#faa74a', '#08b'],
       fontName: 'Nunito Sans',
       height: 300,
-      title: 'Today\'s Activities',
+      title: 'Today\'s Activity',
       titleTextStyle: { fontSize: 12 },
     };
     const {
@@ -220,11 +223,14 @@ class PumpDetail extends Component {
               <div className="row">
                 <div className="col-xs-6 border-right">
                   <div className="row">
-                    <div className="col-xs-6">
+                    <div className="col-xs-5">
                       <h5><strong>Token ID</strong></h5>
                     </div>
-                    <div className="col-xs-6">
+                    <div className="col-xs-5">
                       <h5><strong>Quantities</strong></h5>
+                    </div>
+                    <div className="col-xs-2">
+                      <h5><strong>&nbsp;</strong></h5>
                     </div>
                     {this.buildToken(pump, tokens, this.clickHandler)}
                   </div>
@@ -235,7 +241,7 @@ class PumpDetail extends Component {
                     chartData={[
                       ['Supply', 'Sales'],
                       ['Consumption', Number(pump.consumptionToday || 0)],
-                      ['Distribution', Number(pump.distriputionToday || 0)],
+                      ['Available', Number(pump.distriputionToday || 0) - Number(pump.consumptionToday || 0)],
                     ]}
                     chartId={`pie-chart-${pump.pumpId}`}
                     options={pieChartOptions}

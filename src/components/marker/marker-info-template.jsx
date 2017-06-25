@@ -55,7 +55,7 @@ class MarkerInfoTemplate extends Component {
       fontName: 'Nunito Sans',
       width: 150,
       height: 150,
-      title: 'Today\'s Activities',
+      title: 'Today\'s Activity',
       titleTextStyle: { fontSize: 12 },
     };
     const showSuccess = this.state.disabled ? (<span className="success-info">SUCCESS !!</span>) : null;
@@ -149,7 +149,7 @@ class MarkerInfoTemplate extends Component {
               chartData={[
                 ['Supply', 'Sales'],
                 ['Consumption', Number(pumpDetail.consumptionToday || 0)],
-                ['Distribution', Number(pumpDetail.distriputionToday || 0)],
+                ['Available', Number(pumpDetail.distriputionToday || 0) - Number(pumpDetail.consumptionToday || 0)],
               ]}
               chartId={`pie-chart-${pumpDetail.pumpId}`}
               options={pieChartOptions}
