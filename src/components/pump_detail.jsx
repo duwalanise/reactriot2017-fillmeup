@@ -203,6 +203,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(PumpDetail);
 
 PumpDetail.propTypes = {
-  pumpDetails: PropTypes.string,
-  params: PropTypes.object,
+  pumpDetails: PropTypes.arrayOf(PropTypes.object),
+  params: PropTypes.objectOf(PropTypes.any),
 };

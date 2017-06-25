@@ -11,10 +11,12 @@ class Marker extends Component {
 
   handleClick() {
     const { pumpDetail } = this.props;
-    if (!pumpDetail.isMarkerOpen) {
-      this.props.setPumpId(pumpDetail.pumpId);
-    } else {
-      this.props.setPumpId(null);
+    if (!R.isEmpty(pumpDetail)) {
+      if (!pumpDetail.isMarkerOpen) {
+        this.props.setPumpId(pumpDetail.pumpId);
+      } else {
+        this.props.setPumpId(null);
+      }
     }
   }
 
