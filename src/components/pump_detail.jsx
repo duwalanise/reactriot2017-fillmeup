@@ -178,7 +178,7 @@ export class PumpDetail extends Component {
             <div key={pump.pumpId} className={`tab-pane ${index === 0 ? 'active' : ''}`} id={pump.pumpId}>
               <div className="row">
                 <div className="pump-detail">
-                  <div className="col-xs-6">
+                  <div className="col-xs-8">
                     <h4>{pump.name}
                       <i
                         className="fa fa-pencil-square-o"
@@ -199,7 +199,7 @@ export class PumpDetail extends Component {
                       <span>{pump.contact || '-' }</span>
                     </div>
                   </div>
-                  <div className="col-xs-6 text-right">
+                  <div className="col-xs-4 text-right">
                     Today's information
                     <div className="supply">
                       <i className="fa fa-cart-arrow-down" /> Distribution: {pump.distriputionToday}
