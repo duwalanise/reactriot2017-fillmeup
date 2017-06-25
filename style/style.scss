@@ -21,7 +21,6 @@ body {
 .children-wrap {
   display: grid;
   height: 100vh;
-  margin-top: 51px;
   background: #fff;
 }
 
@@ -31,7 +30,7 @@ body {
   border: 1px solid #ccc;
   padding: 10px;
   height: 80%;
-  margin-top: 3%;
+  margin-top: 7%;
   border-radius: 5px;
   position: relative;
   .log-week {
@@ -42,6 +41,11 @@ body {
   }
   #workstream-column-chart {
     margin-top: -35px;
+  }
+  .add-new-pump {
+    position: absolute;
+    right: 0;
+    top: -40px;
   }
 }
 
