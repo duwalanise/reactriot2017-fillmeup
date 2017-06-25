@@ -11,13 +11,13 @@ class NewPump extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pumpId:'',
+      pumpId: '',
       uid: this.props.uid,
       name: '',
       address: '',
       status: 'open',
       contact: '',
-      coordinates: { lat: null, lng: null },
+      coordinates: { lat: 28, lng: 28 },
       consumptionToday: 0,
       distriputionToday: 0,
       log: [],
@@ -25,6 +25,24 @@ class NewPump extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.mapClick = this.mapClick.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+  }
+
+  componentDidMount() {
+    const autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(this.textInput),
+    { types: ['geocode'] });
+    autocomplete.addListener('place_changed', () => { const newAuto = autocomplete; this.fillInAddress(newAuto); });
+  }
+
+  fillInAddress(autocomplete) {
+    const place = autocomplete.getPlace();
+    if (place.geometry) {
+      this.setState({
+        address: place.formatted_address,
+        coordinates: { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() },
+      });
+    }
   }
 
   generateId() {
@@ -56,6 +74,10 @@ class NewPump extends Component {
     dbref.child('pumps').push(this.state);
   }
 
+  handleAddressChange(evt) {
+    this.setState({ address: evt.target.value });
+  }
+
   render() {
     const { name, address, contact, coordinates } = this.state;
     return (<div className="login-modal">
@@ -70,13 +92,15 @@ class NewPump extends Component {
           required
           handleChange={this.handleChange}
         />
-        <Input
+        <input
+          ref={input => this.textInput = input}
           type="text"
           name="address"
           placeholder="Address"
           value={address}
           className="form-control"
-          handleChange={this.handleChange}
+          style={{ marginBottom: '15px' }}
+          onChange={this.handleAddressChange}
         />
         <Input
           type="text"
@@ -87,7 +111,7 @@ class NewPump extends Component {
           handleChange={this.handleChange}
         />
         <div className="choose-location">
-          <GoogleMap center={[0, 0]} zoom={3} onClick={this.mapClick}>
+          <GoogleMap center={[coordinates.lat, coordinates.lng]} zoom={10} onClick={this.mapClick}>
             <Marker
               lat={coordinates.lat}
               lng={coordinates.lng}
